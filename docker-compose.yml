@@ -3,5 +3,5 @@ services:
   gs-spring-boot-docker:
     image: robin9999/gs-spring-boot-docker:latest
     ports:
-      - 8080
+      - 8080:8080
 
