@@ -1,9 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+	stage('Build') {
+            steps {
+                cmd 'install dockerfile:build'
+            }
+        }
+    stage('Deploy') {
       steps {
-        cmd 'npm package'
+        cmd 'docker-compose up -d'
       }
     }
   }
