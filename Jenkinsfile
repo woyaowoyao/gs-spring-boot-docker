@@ -3,7 +3,7 @@ pipeline {
   stages {
 	stage('Build') {
             steps {
-                bat 'install dockerfile:build'
+                bat 'mvn install dockerfile:build'
             }
         }
     stage('Deploy') {
