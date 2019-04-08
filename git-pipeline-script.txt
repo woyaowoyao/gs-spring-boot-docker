@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  stages {
+      stage ('CheckoutGit') {
+          steps {
+            git 'https://github.com/woyaowoyao/gs-spring-boot-docker.git'
+          }
+        }
+    stage('Stop') {
+      steps {
+        sh 'docker-compose down'
+      }
+    }
+	stage('Build') {
+            steps {
+                sh 'mvn install dockerfile:build'
+            }
+        }
+    stage('Deploy') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+  }
+}
