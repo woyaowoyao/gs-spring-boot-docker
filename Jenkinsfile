@@ -3,17 +3,17 @@ pipeline {
   stages {
     stage('Stop') {
       steps {
-        bat 'docker-compose down'
+        sh 'docker-compose down'
       }
     }
 	stage('Build') {
             steps {
-                bat 'mvn install dockerfile:build'
+                sh 'mvn install dockerfile:build'
             }
         }
     stage('Deploy') {
       steps {
-        bat 'docker-compose up -d'
+        sh 'docker-compose up -d'
       }
     }
   }
